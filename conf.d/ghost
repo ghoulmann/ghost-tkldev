@@ -22,6 +22,7 @@ cd /opt/ghost && su -c "npm install --production" node
 
 #make the db without npm install
 cd /opt/ghost && su -c "NODE_ENV=production forever start index.js" node
+running=$!
 
 
 
@@ -32,7 +33,8 @@ cd /opt/ghost && su -c "forever stop index.js" node
 #chown -R node:node $GHOST_DIR
 
 # pm2
-cd $GHOST_DIR && su -c "NODE_ENV=production pm2 start --name 'ghost' index.js" node
+#cd $GHOST_DIR && su -c "NODE_ENV=production pm2 start --name 'ghost' index.js" node
+kill -15 $running
 
 # remove conflicting nginx site (web-control)
 rm /etc/nginx/sites-enabled/nodejs
