@@ -30,7 +30,7 @@ def usage(s=None):
 def main():
     try:
         opts, args = getopt.gnu_getopt(sys.argv[1:], "h",
-                                       ['help', 'password=', 'email=', 'URL=', 'uname='])
+                                       ['help', 'password=', 'email=', 'addy=', 'uname='])
     except getopt.GetoptError, e:
         usage(e)
 
@@ -47,7 +47,7 @@ def main():
         elif opt == '--email':
             email = val
 	elif opt == '--addy':
-	    URL = val
+	    addy = val
         elif opt == '--username':
             uname = val
 
@@ -90,8 +90,9 @@ def main():
     con = lite.connect(dbase)
     with con:
         cur = con.cursor()
+
         cur.execute('UPDATE roles_users SET role_id="4" WHERE id="1";')
-	    cur.execute('UPDATE roles_users SET user_id="1" WHERE id="1";')
+	cur.execute('UPDATE roles_users SET user_id="1" WHERE id="1";')
         cur.execute('UPDATE users SET password=\"%s\" WHERE id="1";' % hash)
         cur.execute('UPDATE users SET name=\"%s\" WHERE id="1";' % uname)
         cur.execute('UPDATE users SET email=\"%s\" WHERE id="1";' % email)
