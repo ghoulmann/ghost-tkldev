@@ -9,7 +9,7 @@ turnkey-ghost-15.0 (1) turnkey; urgency=low
   * Replace MySQL with MariaDB
 
   * Note: Please refer to turnkey-core's changelog for changes common to all
-    appliances. Here we only describe changes specdific to this appliance.
+    appliances. Here we only describe changes specific to this appliance.
 
  -- Vlad Kuzmenko <vlad.work.here@gmail.com>  Thu, 25 Jan 2018 00:38:42 +0200
 
