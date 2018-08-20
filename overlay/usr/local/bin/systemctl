@@ -5,6 +5,7 @@ service_name=$2
 
 if [[ $# == 1 ]]; then
     if [[ $command_name == "daemon-reload" ]]; then
+        # ignore daemon reloads, service command does not cache init.d scripts
         exit 0
     fi
 elif [[ $# == 2 ]]; then
@@ -17,8 +18,6 @@ elif [[ $# == 2 ]]; then
             echo "inactive"
             exit 1
         fi
-    #elif [[ $command_name == "start" ]]; then
-    #    su ghost -s /bin/bash -c "NODE_ENV=production /usr/local/bin/node /usr/local/bin/ghost run --verbose"&
     fi
 
     if [[ $service_name == "ghost_localhost" ]]; then
