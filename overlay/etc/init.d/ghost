@@ -1,0 +1,38 @@
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides:         ghost
+# Required-Start:   $local_fs $network $named
+# Required-Stop:    $local_fs $network $named
+# Default-Start:    
+# Default-Stop:     
+# Short-Description: Starts Ghost in CHRoots
+# Description: Starts Ghost in CHRoots
+### END INIT INFO
+
+DESC="Ghost"
+NAME=ghost
+
+PIDFILE="/var/run/$NAME-initd.pid"
+DAEMON=/usr/local/bin/node
+
+USER="ghost"
+DIR="/opt/ghost"
+LOGFILE="/var/log/ghost.log"
+
+. /lib/lsb/init-functions
+
+case "$1" in
+    start)
+        start-stop-daemon --start --background --oknodo --user "$USER" \
+                --pidfile "$PIDFILE" --make-pidfile --chdir "$DIR" \
+                --startas "/bin/bash" -- \
+                -c "exec /usr/local/bin/node /usr/local/bin/ghost run > $LOGFILE"
+        ;;
+    stop)
+        start-stop-daemon --stop --background --oknodo --user "$USER" \
+                --pidfile "$PIDFILE"
+        ;;
+    *)
+        ;;
+esac
