@@ -19,8 +19,10 @@ elif [[ $# == 2 ]]; then
             exit 1
         fi
     fi
-
-    if [[ $service_name == "ghost_localhost" ]]; then
+    if [[ $command_name == "enable" ]]; then
+        /bin/systemctl $command_name $service_name
+        exit $!
+    elif [[ $service_name == "ghost_localhost" ]]; then
         service_name="ghost"
     fi
     service $service_name $command_name
