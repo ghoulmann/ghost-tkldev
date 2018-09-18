@@ -1,6 +1,15 @@
+turnkey-ghost-15.1 (1) turnkey; urgency=low
+
+  * Updated Ghost to latest upstream version (2.1.2).
+
+  * Disable ghost user account by default in AWS build (work around AWS
+    security scanner false positive).
+
+ -- Jeremy Davia <jeremy@turnkeylinux.org>  Mon, 17 Sep 2018 14:16:31 +1000
+
 turnkey-ghost-15.0 (1) turnkey; urgency=low
 
-  * Updated Ghost to latest upstream version.
+  * Updated Ghost to latest upstream version (2.0.3).
 
   * Install Ghost via Ghost-CLI
 
