@@ -1,11 +1,25 @@
+turnkey-ghost-15.2 (1) turnkey; urgency=low
+
+  * Updated Ghost to latest upstream version (2.6.1).
+
+  * Bump NodeJS version to 8.x (8.13.0).
+
+  * Rebuild to resolve inadvertent removal of mariadb during sec-updates
+    - part of #1246.
+
+ -- Jeremy Davis <jeremy@turnkeylinux.org>  Thu, 22 Nov 2018 11:49:59 +1100
+
 turnkey-ghost-15.1 (1) turnkey; urgency=low
 
   * Updated Ghost to latest upstream version (2.1.2).
 
+  * Update conf script to install latest version of Ghost and Ghost-cli.
+    [ Stefan Davis ]
+
   * Disable ghost user account by default in AWS build (work around AWS
     security scanner false positive).
 
- -- Jeremy Davia <jeremy@turnkeylinux.org>  Mon, 17 Sep 2018 14:16:31 +1000
+ -- Jeremy Davis <jeremy@turnkeylinux.org>  Mon, 17 Sep 2018 14:16:31 +1000
 
 turnkey-ghost-15.0 (1) turnkey; urgency=low
 
