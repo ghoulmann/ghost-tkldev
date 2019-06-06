@@ -1,3 +1,12 @@
+turnkey-ghost-15.3 (1) turnkey; urgency=low
+
+  * Updated Ghost to latest upstream version (2.23.2).
+
+  * Fix Ghost service not running by default on ISO/OVA builds - closes #1332.
+    [ Stefan Davis ]
+
+ -- Jeremy Davis <jeremy@turnkeylinux.org>  Thu, 06 Jun 2019 15:16:10 +1000
+
 turnkey-ghost-15.2 (1) turnkey; urgency=low
 
   * Updated Ghost to latest upstream version (2.6.1).
