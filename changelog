@@ -1,3 +1,11 @@
+turnkey-ghost-16.0 (1) turnkey; urgency=low
+
+  * Updated Ghsost to latest upstream version (3.13.3).
+
+  * Add ghost_user for maintainance more inline with upstream recommendations.
+
+ -- Stefan Davis <stefan@turnkeylinux.org>  Thu, 16 Apr 2020 11:44:34 +1000
+
 turnkey-ghost-15.3 (1) turnkey; urgency=low
 
   * Updated Ghost to latest upstream version (2.23.2).

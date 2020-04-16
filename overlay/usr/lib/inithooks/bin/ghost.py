@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 """Set Ghost admin password, email, name and domain
 Option:
     --password=     unless provided, will ask interactively
@@ -13,16 +13,16 @@ import bcrypt
 import sqlite3
 from dialog_wrapper import Dialog
 import re
-import os
 from mysqlconf import MySQL
+import subprocess
 
 DEFAULT_UNAME = 'Blogger Unknown'
 
 def usage(s=None):
     if s:
-        print >> sys.stderr, "Error:", s
-    print >> sys.stderr, "Syntax: %s [options]" % sys.argv[0]
-    print >> sys.stderr, __doc__
+        print("Error:", s, file=sys.stderr)
+    print("Syntax: %s [options]" % sys.argv[0], file=sys.stderr)
+    print(__doc__, file=sys.stderr)
     sys.exit(1)
 
 def main():
@@ -30,7 +30,7 @@ def main():
         opts, args = getopt.gnu_getopt(sys.argv[1:], "h",
                                        ['help', 'pass=', 'email=',
                                         'uname=', 'domain='])
-    except getopt.GetoptError, e:
+    except getopt.GetoptError as e:
         usage(e)
 
     password = ''
@@ -93,22 +93,24 @@ def main():
         all_config = fob.read()
 
     current_url = re.findall(r'(https?://\S+)', all_config)[0] # third occurance in file
-    current_url = current_url.translate(None, "\",")
+    current_url = current_url.replace('"', '').replace(',', '')
     all_config = all_config.replace(current_url, domain)
 
     with open('/opt/ghost/config.production.json', 'w') as fob:
         fob.write(all_config)
 
+    password = password.encode('utf8')    
 
     hashed_pw = bcrypt.hashpw(password, bcrypt.gensalt())
 
     cur = MySQL()
-    cur.execute('UPDATE ghost.users SET password=\"%s\" WHERE id="1";' % hashed_pw)
-    cur.execute('UPDATE ghost.users SET name=\"%s\" WHERE id="1";' % uname)
-    cur.execute('UPDATE ghost.users SET email=\"%s\" WHERE id="1";' % email)
+    cur.execute('UPDATE ghost.users SET password=%s WHERE id="1";', (hashed_pw,))
+    cur.execute('UPDATE ghost.users SET name=%s WHERE id="1";', (uname,))
+    cur.execute('UPDATE ghost.users SET email=%s WHERE id="1";', (email,))
     cur.execute('UPDATE ghost.users SET status=\"active\" WHERE id="1";')
 
-    os.system("service ghost_localhost restart")
+    subprocess.run(["chpasswd"], input=b"ghost_user:" + password)
+    subprocess.run(["service", "ghost_localhost", "restart"])
 
 if __name__ == '__main__':
     main()

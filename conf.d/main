@@ -15,9 +15,9 @@ service mysql start
 #Create mysql user and table
 mysql --user=root --password=$MYSQL_PASS --batch --execute "CREATE DATABASE $DB_NAME; GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER ON $DB_NAME.* TO $DB_USER@localhost IDENTIFIED BY '$DB_PASS'; FLUSH PRIVILEGES;"
 
-# Set node version to 8.x - recommended version by Ghost: https://docs.ghost.org/faq/node-versions/
-n 8
-n prune # remove default 10.x node version
+# Set node version to 10.x - recommended version by Ghost: https://docs.ghost.org/faq/node-versions/
+n 10
+n prune # remove default 12.x node version
 
 mkdir $INSTALL_DIR
 
@@ -45,3 +45,22 @@ ln -s /etc/nginx/sites-available/ghost /etc/nginx/sites-enabled/ghost
 systemctl enable ghost_localhost.service
 
 service mysql stop
+
+##setup ghost maintainance user
+
+# change permissions so ghost doesn't complain during maintainance
+find ./ ! -path "./versions/*" -type f -exec chmod 664 {} \;
+
+useradd ghost_user -MN -d /opt/ghost -s /bin/bash -g node -G sudo
+
+# disable ssh login
+echo "DenyUsers ghost_user" >> /etc/ssh/sshd_config
+
+# copy files from skell
+find /etc/skel/ -maxdepth 1 ! -wholename /etc/skel/ -exec cp -Rt /opt/ghost/ {} +
+
+# permissions
+chown -R ghost_user:node /opt/ghost
+chown -R ghost:ghost /opt/ghost/content
+find /opt/ghost -type d -exec chmod 00775 {} \;
+find /opt/ghost ! -path "/opt/ghost/versions/*" -type f -exec chmod 664 {} \;
