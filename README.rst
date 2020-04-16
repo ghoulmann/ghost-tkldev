@@ -40,11 +40,9 @@ update from the command line::
     cd ~
     ghost update
 
-.. note:
-
-   ghost may ask for your sudo password, in this case this will be
-   the "ghost_user" password which is set to the same password as
-   your ghost admin password.
+**Note:** ghost may ask for your sudo password, in this case this
+will be the "ghost_user" password which is set to the same password
+as your ghost admin password.
 
 Ghost does not have a security only newsletter so we recommend that 
 you subcribe to the `Ghost Blog`_ to keep up to date.
