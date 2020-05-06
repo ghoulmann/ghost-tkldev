@@ -36,23 +36,13 @@ you have a tested backup before proceeding with software updates.
 Assuming that updating to the latest Ghost version is supported. 
 update from the command line::
 
-    DIR=/opt/ghost
-    cd $DIR
-    su -c "pm2 stop ghost" node
-    rm -rf core
-    curl -LOk https://ghost.org/zip/ghost-latest.zip
-    unzip ghost-latest.zip -d ghost-temp
-    cd ghost-temp
-    cp -R core $DIR
-    cp index.js *.json *.md $DIR
-    # optional step - update default theme
-    cp -R content/themes/casper $DIR/content/themes
-    cd ..
-    rm -r ghost-temp
-    rm ghost-latest.zip 
-    chown -R node:node $DIR
-    su -c "npm install --production" node
-    su -c "pm2 start ghost" node
+    su ghost_user
+    cd ~
+    ghost update
+
+**Note:** ghost may ask for your sudo password, in this case this
+will be the "ghost_user" password which is set to the same password
+as your ghost admin password.
 
 Ghost does not have a security only newsletter so we recommend that 
 you subcribe to the `Ghost Blog`_ to keep up to date.

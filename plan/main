@@ -1,4 +1,5 @@
 #include <turnkey/base>
+#include <turnkey/mysql>
 
 build-essential # needed by node-gyp for packages with native bindings (e.g., node-inspector)
 ca-certificates
@@ -6,9 +7,7 @@ openssl
 
 nginx
 
-python-bcrypt
-python-pysqlite2
-python-pip
+python3-bcrypt
+python3-pip
 
-mysql-server
 sudo
