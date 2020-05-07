@@ -1,8 +1,9 @@
 turnkey-ghost-16.0 (1) turnkey; urgency=low
 
-  * Updated Ghost to latest upstream version - 3.14.0.
+  * Updated Ghost to latest upstream version - 3.15.0.
 
-  * Update NodeJS to v10.x.
+  * Update NodeJS to v12.x. Ghost recommends v12.x LTS NodeJS version; see:
+    https://ghost.org/faq/node-versions/
 
   * Add ghost_user for maintainance more inline with upstream recommendations.
 
@@ -20,7 +21,7 @@ turnkey-ghost-16.0 (1) turnkey; urgency=low
   * Note: Please refer to turnkey-core's changelog for changes common to all
     appliances. Here we only describe changes specific to this appliance.
 
- -- Stefan Davis <stefan@turnkeylinux.org>  Wed, 06 May 2020 15:45:48 +1000
+ -- Stefan Davis <stefan@turnkeylinux.org>  Thu, 07 May 2020 11:08:45 +1000
 
 turnkey-ghost-15.3 (1) turnkey; urgency=low
 
