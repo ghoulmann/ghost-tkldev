@@ -3,6 +3,8 @@ server {
     listen 0.0.0.0:443 ssl;
     server_name _;
 
+    client_max_body_size 2M;
+
 #    set $nodeapp_port 2368;
 #    include /etc/nginx/include/nodejs-proxy;
     include /etc/nginx/include/ssl;
