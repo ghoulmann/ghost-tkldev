@@ -1,3 +1,12 @@
+turnkey-ghost-16.2 (UNRELEASED) turnkey; urgency=low
+
+  * ...
+
+  * Increase default Ghost upload file size to 2MB - closes #1531.
+    [ Stefan Davis <stefan@turnkeylinux.org> ]
+
+ -- Jeremy Davis <jeremy@turnkeylinux.org>  Wed, 04 Aug 2021 11:56:33 +1000
+
 turnkey-ghost-16.1 (1) turnkey; urgency=low
 
   * Updated Ghost to latest upstream version: 4.0.1.
