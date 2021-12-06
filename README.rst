@@ -31,17 +31,16 @@ Supervised Manual Ghost Update
 current version to the latest is supported. Always ensure that 
 you have a tested backup before proceeding with software updates.
 
-Recommended (but perhaps not required):
-
-Update nodejs (example updating to latest v14)::
+Update NodeJS (recommended but perhaps required; example updating to latest
+NodeJS v14.x - to check current version run 'node -v')::
 
    n 14
 
-Or, updating to latest LTS::
+Or, updating to latest NodeJS LTS (double check that Ghost supports it first)::
 
    n lts
 
-Update Ghost CLI (to latest)::
+Update Ghost CLI (to latest; recommended but likely not required)::
 
    npm install -g ghost-cli@latest
 
@@ -56,7 +55,7 @@ Once finished, exit back to the root user::
 
 **Note:** ghost-cli may ask for your sudo password, by default the
 "ghost_user" sudo password is the same password you set for the Ghost UI
-admin password at firstboot.
+admin at firstboot.
 
 Ghost does not have a security only newsletter so we recommend that 
 you subcribe to the `Ghost Blog`_ to keep up to date.
