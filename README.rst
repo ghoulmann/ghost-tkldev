@@ -31,7 +31,7 @@ Supervised Manual Ghost Update
 current version to the latest is supported. Always ensure that 
 you have a tested backup before proceeding with software updates.
 
-Update NodeJS (recommended but perhaps required; example updating to latest
+Update NodeJS (recommended and perhaps required; example updating to latest
 NodeJS v14.x - to check current version run 'node -v')::
 
    n 14
