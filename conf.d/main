@@ -39,7 +39,7 @@ ghost install --url=http://localhost:2368 --db=mysql --dbhost=localhost --dbuser
 
 sed -i 's/tkldev/ghost/' /etc/hosts
 
-rm /etc/nginx/sites-enabled/default
+rm /etc/nginx/sites-enabled/tkl-default
 
 #ghost runs on 2368. Proxy to port 80 and port 443 (SSL/TLS)
 ln -s /etc/nginx/sites-available/ghost /etc/nginx/sites-enabled/ghost
