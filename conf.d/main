@@ -15,8 +15,8 @@ service mysql start
 #Create mysql user and table
 mysql --user=root --password=$MYSQL_PASS --batch --execute "CREATE DATABASE $DB_NAME; GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER ON $DB_NAME.* TO $DB_USER@localhost IDENTIFIED BY '$DB_PASS'; FLUSH PRIVILEGES;"
 
-# Set node version to 14.x - recommended version by Ghost: https://docs.ghost.org/faq/node-versions/
-n 14
+# Set node version to 16.x - recommended version by Ghost: https://docs.ghost.org/faq/node-versions/
+n 16
 n prune # ensure that other node versions are removed
 
 mkdir $INSTALL_DIR
