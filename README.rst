@@ -32,15 +32,15 @@ current version to the latest is supported. Always ensure that
 you have a tested backup before proceeding with software updates.
 
 Update NodeJS (recommended and perhaps required; example updating to latest
-NodeJS v14.x - to check current version run 'node -v')::
+NodeJS v16.x - to check current version run 'node -v')::
 
-   n 14
+   n 16
 
 Or, updating to latest NodeJS LTS (double check that Ghost supports it first)::
 
    n lts
 
-Update Ghost CLI (to latest; recommended but likely not required)::
+Update Ghost CLI (to latest; recommended, but likely not required)::
 
    npm install -g ghost-cli@latest
 
