@@ -17,8 +17,6 @@ and on top of that:
      they **ARE NOT** configured to install automatically. See below for
      updating Ghost.
 
-   
-   - Ghost process managed by `pm2`_.
    - Includes Nginx (webserver); pre-configured to proxy Ghost.
 
 - SSL support out of the box.
@@ -33,16 +31,31 @@ Supervised Manual Ghost Update
 current version to the latest is supported. Always ensure that 
 you have a tested backup before proceeding with software updates.
 
-Assuming that updating to the latest Ghost version is supported. 
-update from the command line::
+Update NodeJS (recommended and perhaps required; example updating to latest
+NodeJS v16.x - to check current version run 'node -v')::
 
-    su ghost_user
-    cd ~
+   n 16
+
+Or, updating to latest NodeJS LTS (double check that Ghost supports it first)::
+
+   n lts
+
+Update Ghost CLI (to latest; recommended, but likely not required)::
+
+   npm install -g ghost-cli@latest
+
+Then update ghost itself. Become ghost_user and update::
+
+    su - ghost_user
     ghost update
 
-**Note:** ghost may ask for your sudo password, in this case this
-will be the "ghost_user" password which is set to the same password
-as your ghost admin password.
+Once finished, exit back to the root user::
+
+   exit
+
+**Note:** ghost-cli may ask for your sudo password, by default the
+"ghost_user" sudo password is the same password you set for the Ghost UI
+admin at firstboot.
 
 Ghost does not have a security only newsletter so we recommend that 
 you subcribe to the `Ghost Blog`_ to keep up to date.
@@ -51,11 +64,9 @@ Credentials *(passwords set at first boot)*
 -------------------------------------------
 
 -  Webmin, SSH, MySQL, Adminer: username **root**
--  Ghost: username **admin**
+-  Ghost: username [email set at firstboot]
 
 
 .. _Ghost: https://ghost.org/
 .. _TurnKey Core: https://www.turnkeylinux.org/core
-.. _pm2: http://pm2.keymetrics.io/
 .. _Ghost Blog: https://blog.ghost.org/
-

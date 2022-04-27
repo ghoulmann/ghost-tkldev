@@ -1,3 +1,16 @@
+turnkey-ghost-17.0 (1) turnkey; urgency=low
+
+  * Update update docs (readme).
+    [ Jeremy Davis <jeremy@turnkeylinux.org> ]
+
+  * Increase default Ghost upload file size to 2MB - closes #1531.
+    [ Stefan Davis <stefan@turnkeylinux.org> ]
+
+  * Note: Please refer to turnkey-core's 17.0 changelog for changes common to all
+    appliances. Here we only describe changes specific to this appliance.
+
+ -- Zhenya Hvorostian <zhenya@turnkeylinux.org> Tue, 08 Feb 2022 13:45:02 +0300
+
 turnkey-ghost-16.1 (1) turnkey; urgency=low
 
   * Updated Ghost to latest upstream version: 4.0.1.

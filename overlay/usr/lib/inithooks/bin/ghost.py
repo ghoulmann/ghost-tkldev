@@ -11,10 +11,11 @@ import sys
 import getopt
 import bcrypt
 import sqlite3
-from dialog_wrapper import Dialog
 import re
-from mysqlconf import MySQL
 import subprocess
+
+from libinithooks.dialog_wrapper import Dialog
+from mysqlconf import MySQL
 
 DEFAULT_UNAME = 'Blogger Unknown'
 
