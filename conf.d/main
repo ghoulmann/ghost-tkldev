@@ -32,12 +32,7 @@ cd $INSTALL_DIR
 adduser ghost --gecos ",,," --disabled-password
 echo "ghost:ghostpass" | chpasswd
 
-#sudo complains about hostname not being tkldev, this is a temporary fix
-sed -i 's/ghost/tkldev/' /etc/hosts
-
 ghost install --url=http://localhost:2368 --db=mysql --dbhost=localhost --dbuser=ghost --dbpass=$DB_PASS --dbname=ghost --no-prompt --mail=sendmail --no-stack || true
-
-sed -i 's/tkldev/ghost/' /etc/hosts
 
 rm /etc/nginx/sites-enabled/tkl-default
 
