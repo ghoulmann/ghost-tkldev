@@ -15,6 +15,11 @@ service mysql start
 #Create mysql user and table
 mysql --user=root --password=$MYSQL_PASS --batch --execute "CREATE DATABASE $DB_NAME; GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER ON $DB_NAME.* TO $DB_USER@localhost IDENTIFIED BY '$DB_PASS'; FLUSH PRIVILEGES;"
 
+export http_proxy=$FAB_HTTP_PROXY
+export https_proxy=$FAB_HTTPS_PROXY
+# required for npm to use squid proxy
+export NODE_EXTRA_CA_CERTS=/usr/local/share/ca-certificates/squid_proxyCA.crt
+
 # Set node version to 16.x - recommended version by Ghost: https://docs.ghost.org/faq/node-versions/
 n 16
 n prune # ensure that other node versions are removed
@@ -65,3 +70,5 @@ chown -R ghost_user:node /opt/ghost
 chown -R ghost:ghost /opt/ghost/content
 find /opt/ghost -type d -exec chmod 00775 {} \;
 find /opt/ghost ! -path "/opt/ghost/versions/*" -type f -exec chmod 664 {} \;
+
+unset http_proxy https_proxy NODE_EXTRA_CA_CERTS
