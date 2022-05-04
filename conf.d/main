@@ -44,10 +44,6 @@ rm /etc/nginx/sites-enabled/tkl-default
 #ghost runs on 2368. Proxy to port 80 and port 443 (SSL/TLS)
 ln -s /etc/nginx/sites-available/ghost /etc/nginx/sites-enabled/ghost
 
-# disable nodejs tkl-webcp
-rm -r /opt/tklweb-cp
-rm /etc/systemd/system/pm2-node.service
-
 systemctl enable ghost_localhost.service
 
 service mysql stop
