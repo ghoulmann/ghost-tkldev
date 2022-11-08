@@ -1,6 +1,6 @@
 #include <turnkey/base>
 #include <turnkey/mysql>
-#include <turnkey/nodejs>
+#include <turnkey/nodejs-nginx>
 
 python3-bcrypt
 python3-pip
